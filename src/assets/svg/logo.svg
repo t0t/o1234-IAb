@@ -1,0 +1,8 @@
+<svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="#ffffff" stroke-width="2"></circle>
+        <circle cx="50" cy="50" r="5" fill="#ffffff"></circle>
+        <circle cx="75" cy="50" r="5" fill="#ffffff"></circle>
+        <circle cx="50" cy="25" r="5" fill="#ffffff"></circle>
+        <circle cx="25" cy="50" r="5" fill="#ffffff"></circle>
+        <circle cx="50" cy="75" r="5" fill="#ffffff"></circle>
+      </svg>

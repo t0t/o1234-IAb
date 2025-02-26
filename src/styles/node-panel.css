@@ -1,0 +1,151 @@
+/* Estilos para el panel de información de nodos */
+#node-info-panel {
+  position: absolute;
+  padding: 25px;
+  background-color: #2d2d2d;
+  backdrop-filter: blur(5px);
+  border-radius: 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  color: var(--color-text-primary);
+  z-index: 999;
+  max-width: 350px;
+  max-height: 80vh;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+  border: 1px solid #444;
+}
+
+/* Responsive para dispositivos móviles */
+@media (max-width: 768px) {
+  #node-info-panel {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    max-height: 40vh;
+    padding: 15px;
+    border-radius: 0; /* Eliminar bordes redondeados */
+    border-top: 1px solid #444;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+  }
+}
+
+/* Estilos para el contenido del panel */
+#node-info-panel .panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#node-info-panel .panel-title {
+  margin: 0;
+  font-size: 20px;
+  color: #fff;
+  word-break: break-word;
+}
+
+@media (max-width: 768px) {
+  #node-info-panel .panel-title {
+    font-size: 18px;
+  }
+}
+
+#node-info-panel .close-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #999;
+  font-size: 18px;
+  padding: 5px;
+  margin-right: -10px;
+  transition: color 0.2s;
+}
+
+#node-info-panel .close-button:hover {
+  color: #fff;
+}
+
+#node-info-panel .node-content {
+  margin-bottom: 20px;
+  line-height: 1.6;
+  color: #eee;
+}
+
+#node-info-panel .node-details {
+  font-size: 13px;
+  color: #999;
+  padding-top: 15px;
+  border-top: 1px solid #444;
+}
+
+#node-info-panel .detail-row {
+  margin-bottom: 8px;
+}
+
+/* Estilos para elementos HTML dentro del contenido */
+#node-info-panel .node-content h1, 
+#node-info-panel .node-content h2, 
+#node-info-panel .node-content h3, 
+#node-info-panel .node-content h4 {
+  color: #fff;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+#node-info-panel .node-content p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+#node-info-panel .node-content ul, 
+#node-info-panel .node-content ol {
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
+#node-info-panel .node-content li {
+  margin-bottom: 8px;
+}
+
+#node-info-panel .node-content a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+#node-info-panel .node-content a:hover {
+  text-decoration: underline;
+}
+
+#node-info-panel .node-content img {
+  max-width: 100%;
+  height: auto;
+  margin: 10px 0;
+}
+
+#node-info-panel .node-content input,
+#node-info-panel .node-content textarea,
+#node-info-panel .node-content select {
+  background-color: #3d3d3d;
+  border: 1px solid #555;
+  color: #fff;
+  padding: 8px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+#node-info-panel .node-content button {
+  background-color: var(--color-primary);
+  border: none;
+  color: #fff;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#node-info-panel .node-content button:hover {
+  background-color: var(--color-primary-variant);
+}

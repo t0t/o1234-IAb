@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Landing Page Experimental</title>
+  <link rel="icon" href="/public/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/styles/variables.css">
+  <link rel="stylesheet" href="./src/styles/main.css">
+  <link rel="stylesheet" href="./src/styles/node-panel.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Logo SVG fijo en la esquina -->
+    <div class="logo-container">
+      <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="#ffffff" stroke-width="2"/>
+        <circle cx="50" cy="50" r="5" fill="#ffffff"/>
+        <circle cx="75" cy="50" r="5" fill="#ffffff"/>
+        <circle cx="50" cy="25" r="5" fill="#ffffff"/>
+        <circle cx="25" cy="50" r="5" fill="#ffffff"/>
+        <circle cx="50" cy="75" r="5" fill="#ffffff"/>
+      </svg>
+    </div>
+
+    <!-- Contenedor principal para Cytoscape -->
+    <div id="cy" class="cytoscape-container"></div>
+    
+    <!-- Panel de información expandible -->
+    <div id="expandable-panel" class="info-panel">
+      <div class="info-panel-content" id="info-panel-content"></div>
+    </div>
+    
+    <!-- Controles de navegación para móviles -->
+    <div class="mobile-controls">
+      <button id="zoom-in" aria-label="Acercar">+</button>
+      <button id="zoom-out" aria-label="Alejar">-</button>
+      <button id="reset-view" aria-label="Reiniciar vista">↺</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script type="module" src="/src/js/main.js"></script>
+</body>
+</html>

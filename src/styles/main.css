@@ -1,0 +1,264 @@
+/* Estilos principales */
+
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: var(--font-family-primary);
+  background: radial-gradient(circle at center, var(--color-background-start) 0%, var(--color-background) 50%, var(--color-background-end) 100%);
+  color: var(--color-text-primary);
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+  html, body {
+    font-size: 14px; /* Reducir tamaño de fuente base para móviles */
+  }
+}
+
+/* Grid de 12 columnas */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--spacing-unit);
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Grid responsive */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: calc(var(--spacing-unit) / 2);
+    padding: 0 var(--spacing-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Contenedor principal */
+.app-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Logo fijo en la esquina */
+.logo-container {
+  position: fixed;
+  top: var(--spacing-md);
+  left: var(--spacing-md);
+  z-index: var(--z-index-floating);
+  width: 60px;
+  height: 60px;
+  transition: var(--transition-default);
+}
+
+@media (max-width: 768px) {
+  .logo-container {
+    width: 45px;
+    height: 45px;
+    top: var(--spacing-sm);
+    left: var(--spacing-sm);
+  }
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  transition: var(--transition-default);
+}
+
+.logo:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Contenedor de Cytoscape */
+.cytoscape-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z-index-background);
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Optimización para visualización en pantallas grandes */
+@media (min-width: 1200px) {
+  .cytoscape-container {
+    max-width: 100vw;
+    max-height: 100vh;
+  }
+}
+
+/* Ajustes específicos para móviles */
+@media (max-width: 768px) {
+  .cytoscape-container {
+    padding: 5px; /* Menos padding en móvil para aprovechar toda la pantalla */
+  }
+}
+
+/* Controles de navegación para móviles */
+.mobile-controls {
+  display: none; /* Oculto por defecto en escritorio */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: var(--z-index-controls);
+}
+
+@media (max-width: 768px) {
+  .mobile-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .mobile-controls button {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: rgba(45, 45, 45, 0.7);
+    backdrop-filter: blur(5px);
+    border: 1px solid #444;
+    color: #fff;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-default);
+  }
+  
+  .mobile-controls button:hover {
+    background-color: rgba(60, 60, 60, 0.8);
+  }
+}
+
+/* Panel de información expandible */
+.info-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  z-index: var(--z-index-modal);
+  background-color: transparent;
+  backdrop-filter: none;
+  padding: var(--spacing-lg);
+  border-radius: 0;
+  box-shadow: none;
+  max-width: 60%;
+  max-height: 60%;
+  overflow: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--transition-default);
+}
+
+@media (max-width: 768px) {
+  .info-panel {
+    max-width: 100%;
+    width: 100%;
+    bottom: 0;
+    top: auto;
+    left: 0;
+    transform: translateY(100%);
+    max-height: 35vh;
+    padding: var(--spacing-sm);
+    border-radius: 0; /* Quitamos los bordes redondeados */
+  }
+  
+  .info-panel.open {
+    transform: translateY(0);
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .info-panel-content {
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .info-panel.open ~ .mobile-controls {
+    bottom: calc(35vh + 10px);
+  }
+}
+
+.info-panel.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.info-panel-content {
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Ajustes para pantallas táctiles */
+@media (pointer: coarse) {
+  /* Aumentar las áreas de toque para dispositivos táctiles */
+  .close-button, 
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 12px;
+  }
+  
+  /* Añadir más espacio entre elementos interactivos */
+  .node-content button {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+/* Estilos para nodos personalizados */
+.custom-node {
+  border-radius: var(--border-radius-circle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-primary);
+  font-weight: bold;
+  font-size: 14px;
+  transition: var(--transition-default);
+}
+
+.custom-node:hover {
+  transform: scale(1.1);
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+  .logo-container {
+    width: 40px;
+    height: 40px;
+    top: var(--spacing-sm);
+    left: var(--spacing-sm);
+  }
+  
+  .info-panel {
+    max-width: 90%;
+    max-height: 70%;
+    padding: var(--spacing-md);
+  }
+}
